@@ -17,7 +17,7 @@ def carregar_cadastros():
     try:
         with open (arquivo_cadastros, "r", encoding="utf-8") as arquivo:
             return json.load(arquivo)
-        except (FileNotFoundError, json.JSONDecodeError):
+    except (FileNotFoundError, json.JSONDecodeError):
             return []
 
 def cadastrar_pessoa(cadastros):
@@ -29,15 +29,14 @@ def cadastrar_pessoa(cadastros):
     salvar_cadastros(cadastros)
     print("Cadastro finalizado com sucesso")
 
-    def ver_cadastros(cadastros):
-        if not cadastros:
-            print("\n Nenhum cadastro no sistema")
-        else:
-            print("\n-------Lista de Cadastros------")
-            for i, pessoa in enumerate(cadastros, 1):
-                print(f"{i} . Nome: {pessoa['Nome']}, Idade: 
-{pessoa['Idade']}, Turma: {pessoa['Turma']}, Curso: {pessoa['Curso']}")
-    input("\n Pressione Enter para voltar ao menu...")
+def ver_cadastros(cadastros):
+    if not cadastros:
+        print("\n Nenhum cadastro no sistema")
+    else:
+        print("\n-------Lista de Cadastros------")
+        for i, pessoa in enumerate(cadastros, 1):
+            print(f"{i} . Nome: {pessoa['Nome']}, Idade: {pessoa['Idade']}, Turma: {pessoa['Turma']}, Curso: {pessoa['Curso']}")
+        input("\n Pressione Enter para voltar ao menu...")
 
 def main():
     cadastros = carregar_cadastros()
